@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>mariyaGPT</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='styles.css', v=static_version) }}"
+    >
+</head>
+
+<body class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-brand">
+
+            <div class="login-logo">
+                M
+            </div>
+
+            <div>
+                <h1>mariyaGPT</h1>
+                <p>Your personal AI assistant</p>
+            </div>
+
+        </div>
+
+        <div class="login-heading">
+
+            <h2>Let's get started</h2>
+
+            <p>
+                Enter your name and connect your OpenRouter account.
+            </p>
+
+        </div>
+
+        <p
+            id="setup-error"
+            class="error-message login-error"
+        ></p>
+
+        <form
+            id="setup-form"
+            class="login-form"
+        >
+
+            <div class="login-field">
+
+                <label for="name">
+                    Your name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                    autofocus
+                >
+
+            </div>
+
+            <div class="login-field">
+
+                <label for="api-key">
+                    OpenRouter API key
+                </label>
+
+                <input
+                    type="password"
+                    id="api-key"
+                    name="api_key"
+                    placeholder="sk-or-..."
+                    required
+                >
+
+            </div>
+
+            <div class="login-field">
+
+                <label for="model">
+                    Model
+                </label>
+
+                <select
+                    id="model"
+                    name="model"
+                    required
+                >
+
+                    <option value="openrouter/free">
+                        OpenRouter Free Model
+                    </option>
+
+                    <option value="nvidia/nemotron-3-super-120b-a12b:free">
+                        NVIDIA Nemotron 3 Super 120B
+                    </option>
+
+                    <option value="openai/gpt-oss-20b:free">
+                        OpenAI GPT-OSS 20B
+                    </option>
+
+                    <option value="nvidia/nemotron-3-ultra-550b-a55b:free">
+                        NVIDIA Nemotron 3 Ultra 550B
+                    </option>
+
+                </select>
+
+            </div>
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+                Start Chatting
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+        window.BACKEND_URL = {{ backend_url | tojson }};
+    </script>
+
+    <script
+        src="{{ url_for('static', filename='setup.js', v=static_version) }}"
+    ></script>
+
+</body>
+</html>
