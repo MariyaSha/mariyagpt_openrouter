@@ -76,7 +76,7 @@ def api_proxy(path):
         data=request.get_data(),
         params=request.args,
         stream=True,
-        timeout=120,
+        timeout=(10, 300),
     )
 
     excluded_headers = {
